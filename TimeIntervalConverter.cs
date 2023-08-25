@@ -52,6 +52,9 @@ namespace System.Text.Json.Converter
         public static implicit operator TimeSpan( TimeInterval interval )
             => interval.Value;
 
+        public static implicit operator TimeInterval( TimeSpan timeSpan )
+            => By( timeSpan );
+
         public static readonly Regex Filter =
             new( @"(\d+)([dhms]+)[- _:\/']*",
                 RegexOptions.IgnoreCase
