@@ -1,6 +1,6 @@
 # Json.TimeInterval
 
-Extends `System.Text.Json` with new custom `TimeInterval` value type.
+Extends `System.Text.Json` with new custom `TimeInterval` value type. Be aware, it is implemented for deserialization or read only!
 
 ```json
 {
