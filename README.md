@@ -5,8 +5,8 @@ Extends `System.Text.Json` with new custom `TimeInterval` value type. Be aware, 
 ```json
 {
     "TheDevice": {
-        "TimeOut": "3s",
-        "PollInterval": "500ms",
+        "Timeout": "3s",
+        "PollingInterval": "500ms",
         "RefreshTokenEvery": "1h 15m"
     }
 }
@@ -41,10 +41,10 @@ public class MyClass_ToDeserializeJson
 
     public class Device 
     {
-        public TimeInterval TimeOut {get; set;}
+        public TimeInterval Timeout {get; set;}
             = TimeSpan.FromSeconds( 3 );
 
-        public TimeInterval PollInterval {get; set;}
+        public TimeInterval PollingInterval {get; set;}
             = TimeSpan.FromMilliseconds( 500 );
 
         public TimeInterval RefreshTokenEvery {get; set;}
@@ -57,13 +57,16 @@ public class MyClass_ToDeserializeJson
 
 public async Task Main()
 {
-    ...
-
-    TimeSpan pollInterval = obj.TheDevice.PollInterval;
+    TimeSpan pollingInterval =
+        // Use streams not strings! This is just a short example.
+        JsonSerializer.Deserialize<MyClass_ToDeserializeJson>(
+            File.ReadAllText( "./deviceconfig.json" ) )
+        .TheDevice
+        .PollingInterval;
 
     while (!Console.KeyAvailable) {
         Debug.Write(".")
-        await Task.Delay( pollInterval );
+        await Task.Delay( pollingInterval );
     }
 }
 ```
