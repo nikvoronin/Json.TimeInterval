@@ -1,6 +1,6 @@
 # Json.TimeInterval
 
-Extends `System.Text.Json` with new custom `TimeInterval` value type. Be aware, it is implemented for deserialization or read only!
+Extends `System.Text.Json` with a custom new `TimeInterval` value type. Be aware, it is implemented for deserialization or read only!
 
 ```json
 {
@@ -14,7 +14,7 @@ Extends `System.Text.Json` with new custom `TimeInterval` value type. Be aware, 
 
 ## Format
 
-Use string quotas `""` to decorate values:
+Use string quotes `""` to decorate values:
 
 ```json
 "KeyName": "1500ms"
