@@ -60,7 +60,7 @@ public async Task Main()
     TimeSpan pollingInterval =
         // Use streams not strings! This is just a short example.
         JsonSerializer.Deserialize<MyClass_ToDeserializeJson>(
-            File.ReadAllText( "./deviceconfig.json" ) )
+            File.ReadAllText( "./devsettings.json" ) )
         .TheDevice
         .PollingInterval;
 
